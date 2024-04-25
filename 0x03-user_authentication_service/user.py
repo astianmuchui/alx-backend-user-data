@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Mapping definition of a user model
 using the sqlalchemy ORM
@@ -12,7 +11,6 @@ Base = declarative_base()
 
 
 class User(Base):
-
     """
     User model definition
     """
