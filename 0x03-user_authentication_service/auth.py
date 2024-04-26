@@ -24,5 +24,6 @@ class Auth:
 
         if self._db.find_user_by(email=email) is not None:
             raise ValueError(f"User {email} already exists")
-        hashed_password = _hash_password(password)
-        return User(email=email, hashed_password=hashed_password)
+        else:
+            hashed_password = _hash_password(password)
+            return User(email, hashed_password)
