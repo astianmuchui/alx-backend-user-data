@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from bcrypt import hashpw, gensalt
 from db import DB
+from user import User
 
 
 def _hash_password(password: str) -> str:
@@ -17,7 +18,11 @@ class Auth:
         self._db = DB()
 
     def register_user(self, email: str, password: str) -> None:
-        """Registers a new user
         """
+        Registers a new user
+        """
+
+        if self._db.find_user_by(email=email) is not None:
+            raise ValueError(f"User {email} already exists")
         hashed_password = _hash_password(password)
-        self._db.add_user(email, hashed_password)
+        return User(email=email, hashed_password=hashed_password)
