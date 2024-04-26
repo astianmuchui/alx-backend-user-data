@@ -33,10 +33,10 @@ class DB:
 
     def add_user(self, email: str, hashed_password: str) -> User:
         """Adds a new user"""
-        user = User(email=email, hashed_password=hashed_password)
-        self._session.add(user)
+        n_user = User(email=email, hashed_password=hashed_password)
+        self._session.add(n_user)
         self._session.commit()
-        return user
+        return n_user
 
     def find_user_by(self, **kwargs) -> User:
         """Filters users by parameters passed"""
